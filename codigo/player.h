@@ -1,22 +1,19 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#define MAX_JOGADORES 200
+
+#define MAX_NAME 50
+
 
 typedef struct {
-    int id;
-    char nome[50];
-    int idade;
-    int clubeId;
-    int ativo;
-} Jogador;
+char name[MAX_NAME];
+int age;
+char position[20];
+} Player;
 
-void inicializarJogadores();
-void adicionarJogador();
-void listarJogadoresPorClube();
-void editarJogador();
-void removerJogador();
 
-extern Jogador jogadores[MAX_JOGADORES];
+void createPlayer(Player *p);
+void printPlayer(Player p);
+
 
 #endif

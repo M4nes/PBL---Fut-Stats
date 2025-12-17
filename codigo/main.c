@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include "menu.h"
 
-int main() {
-    iniciarSistema();
 
-    return 0;
-    
+int main() {
+Club club;
+club.playerCount = 0;
+
+
+handleMainMenu(&club);
+
+
+return 0;
 }

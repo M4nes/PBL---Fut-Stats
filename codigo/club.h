@@ -1,21 +1,24 @@
 #ifndef CLUB_H
 #define CLUB_H
 
-#define MAX_CLUBES 50
+
+#include "player.h"
+
+
+#define MAX_PLAYERS 30
+#define MAX_CLUB_NAME 50
+
 
 typedef struct {
-    int id;
-    char nome[50];
-    int ativo;
-} Clube;
+char name[MAX_CLUB_NAME];
+Player players[MAX_PLAYERS];
+int playerCount;
+} Club;
 
-void inicializarClubes();
-void criarClube();
-void listarClubes();
-void editarClube();
-void removerClube();
-int escolherClube();
 
-extern Clube clubes[MAX_CLUBES];
+void createClub(Club *c);
+void addPlayerToClub(Club *c);
+void printClub(Club c);
+
 
 #endif
