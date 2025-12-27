@@ -1,28 +1,33 @@
 #ifndef MATCH_H
 #define MATCH_H
 
-
 #include "club.h"
 
-
 typedef struct {
-int goals;
-int assists;
-int fouls;
-int shots;
-} PlayerStats;
+    Club *clubA;
+    Club *clubB;
 
+    int scoreA;
+    int scoreB;
 
-typedef struct {
-Club *home;
-Club *away;
-int homeGoals;
-int awayGoals;
+    int shotsA;
+    int shotsOnTargetA;
+    int foulsA;
+    int cornersA;
+    int yellowA;
+    int redA;
+    float possessionA;
+
+    int shotsB;
+    int shotsOnTargetB;
+    int foulsB;
+    int cornersB;
+    int yellowB;
+    int redB;
+    float possessionB;
 } Match;
-
 
 void playMatch(Match *m);
 void printMatch(Match m);
-
 
 #endif

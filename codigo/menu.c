@@ -1,44 +1,53 @@
 #include <stdio.h>
 #include "menu.h"
+#include "player.h"
+#include "club.h"
 
+void mainMenu(){
+    int op;
 
-void showMainMenu() {
-printf("\n===== FOOTBALL MANAGER =====\n");
-printf("1 - Criar Clube\n");
-printf("2 - Adicionar Jogador\n");
-printf("3 - Mostrar Clube\n");
-printf("0 - Sair\n");
-printf("Escolha: ");
-}
+    do{
+        printf("\n===== FUT STATS =====\n");
+        printf("1. Clubes\n");
+        printf("2. Jogadores\n");
+        printf("3. Jogos (iremos fazer depois)\n");
+        printf("0. Sair\n");
+        printf("Escolha: ");
+        scanf("%d", &op);
 
+        if(op == 1){
+            int c;
+            do {
+                printf("\n--- CLUBES ---\n");
+                printf("1. Adicionar clube\n");
+                printf("2. Mostrar clubes\n");
+                printf("3. Editar clube\n");
+                printf("0. Voltar\n");
+                printf("Escolha: ");
+                scanf("%d", &c);
 
-void handleMainMenu(Club *club) {
-int option;
+                if(c == 1) addClub();
+                else if(c == 2) listClubs();
+                else if(c == 3) editClub();
 
+            } while(c != 0);
+        }
 
-do {
-showMainMenu();
-scanf("%d", &option);
-getchar();
+        else if(op == 2){
+            int j;
+            do {
+                printf("\n--- JOGADORES ---\n");
+                printf("1. Adicionar jogador\n");
+                printf("2. Mostrar jogadores\n");
+                printf("0. Voltar\n");
+                printf("Escolha: ");
+                scanf("%d", &j);
 
+                if(j == 1) addPlayer();
+                else if(j == 2) listPlayers();
 
-switch(option) {
-case 1:
-createClub(club);
-break;
-case 2:
-addPlayerToClub(club);
-break;
-case 3:
-printClub(*club);
-break;
-case 0:
-printf("Saindo...\n");
-break;
-default:
-printf("Opção inválida!\n");
-}
+            } while(j != 0);
+        }
 
-
-} while(option != 0);
+    } while(op != 0);
 }
