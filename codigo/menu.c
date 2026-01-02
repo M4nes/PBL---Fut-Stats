@@ -2,52 +2,41 @@
 #include "menu.h"
 #include "player.h"
 #include "club.h"
+#include "match.h"
 
-void mainMenu(){
+void mainMenu(void) {
     int op;
 
-    do{
-        printf("\n===== FUT STATS =====\n");
-        printf("1. Clubes\n");
-        printf("2. Jogadores\n");
-        printf("3. Jogos (iremos fazer depois)\n");
+    do {
+        printf("\n");
+        printf("==================================\n");
+        printf("          FUT STATS\n");
+        printf("==================================\n");
+        printf("1. Jogadores     (%d cadastrados)\n", getPlayerCount());
+        printf("2. Clubes        (%d cadastrados)\n", getClubCount());
+        printf("3. Partidas      (%d jogadas)\n", matchCount);
         printf("0. Sair\n");
+        printf("==================================\n");
         printf("Escolha: ");
         scanf("%d", &op);
 
-        if(op == 1){
-            int c;
-            do {
-                printf("\n--- CLUBES ---\n");
-                printf("1. Adicionar clube\n");
-                printf("2. Mostrar clubes\n");
-                printf("3. Editar clube\n");
-                printf("0. Voltar\n");
-                printf("Escolha: ");
-                scanf("%d", &c);
-
-                if(c == 1) addClub();
-                else if(c == 2) listClubs();
-                else if(c == 3) editClub();
-
-            } while(c != 0);
+        switch (op) {
+            case 1:
+                menuJogadores();
+                break;
+            case 2:
+                menuClubes();
+                break;
+            case 3:
+                menuPartidas();
+                break;
+            case 0:
+                printf("\nObrigado por jogar Fut Stats! Até a próxima! ⚽\n");
+                break;
+            default:
+                printf("\nOpção inválida! Tente novamente.\n");
+                printf("Pressione ENTER para continuar...");
+                getchar(); getchar();
         }
-
-        else if(op == 2){
-            int j;
-            do {
-                printf("\n--- JOGADORES ---\n");
-                printf("1. Adicionar jogador\n");
-                printf("2. Mostrar jogadores\n");
-                printf("0. Voltar\n");
-                printf("Escolha: ");
-                scanf("%d", &j);
-
-                if(j == 1) addPlayer();
-                else if(j == 2) listPlayers();
-
-            } while(j != 0);
-        }
-
-    } while(op != 0);
+    } while (op != 0);
 }

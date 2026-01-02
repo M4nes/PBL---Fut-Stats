@@ -1,25 +1,33 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#define MAX_PLAYERS 200
+#define MAX_NAME 50
+#define MAX_NATIONALITY 50
+#define MAX_POSITION 30
+#define MAX_CLUB 50
+
 typedef struct {
-    char name[50];
+    char name[MAX_NAME];
+    int shirtNumber;              // NOVO: número da camisa
+    char position[MAX_POSITION];
+    char nationality[MAX_NATIONALITY];
     int age;
-    char nationality[50];
-    char position[20];
-
-    int birthDay;
-    int birthMonth;
-    int birthYear;
-
-    char lastClub[50];
-    char currentClub[50];
-    int careerGoals;
+    char lastClub[MAX_CLUB];      
+    char currentClub[MAX_CLUB];
+    int careerGoals;              
 } Player;
 
-void addPlayer();
-void listPlayers();
-int findPlayerIndex(char name[]);
-Player getPlayer(int index);
-int getPlayerCount();
+// Funções
+void menuJogadores(void);
+void addPlayer(void);
+void listPlayers(void);
+int findPlayerIndex(const char *name);
+Player* getPlayer(int index);
+int getPlayerCount(void);
+void editPlayer(void);
+
+extern Player players[MAX_PLAYERS];
+extern int playerCount;
 
 #endif

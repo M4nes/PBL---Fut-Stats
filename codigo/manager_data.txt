@@ -1,7 +1,8 @@
-NEXT 2 3 1
-PLAYERS 1
-1|Neymar|39|Atacante
+FUT STATS SAVE FILE v1.0
+PLAYERS 2
+Neymar Jr|39|Brasileiro|Meia
+Rodri|25|Desconhecida|Meia
 CLUBS 2
-1|Brasil|1|1
-2|Santos|1|1
+0|Brasil|1|0
+1|Vasco|1|1
 MATCHES 0
