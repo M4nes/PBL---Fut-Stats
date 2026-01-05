@@ -5,7 +5,7 @@
 #include "match.h"
 
 void mainMenu(void) {
-    int op;
+    int op;                       // Cria uma variável inteira pra guardar a opção do usuário.
 
     do {
         printf("\n");
@@ -38,5 +38,5 @@ void mainMenu(void) {
                 printf("Pressione ENTER para continuar...");
                 getchar(); getchar();
         }
-    } while (op != 0);
+    } while (op != 0);            // Fecha o switch e o loop (vai repeti enquanto op não for 0).
 }

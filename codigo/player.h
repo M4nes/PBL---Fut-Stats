@@ -9,7 +9,7 @@
 
 typedef struct {
     char name[MAX_NAME];
-    int shirtNumber;              // NOVO: número da camisa
+    int shirtNumber;              //
     char position[MAX_POSITION];
     char nationality[MAX_NATIONALITY];
     int age;
