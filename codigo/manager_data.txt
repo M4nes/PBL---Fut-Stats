@@ -1,8 +1,10 @@
-FUT STATS SAVE FILE v1.0
 PLAYERS 2
-Neymar Jr|39|Brasileiro|Meia
-Rodri|25|Desconhecida|Meia
-CLUBS 2
-0|Brasil|1|0
-1|Vasco|1|1
-MATCHES 0
+Rodri|12|30|Brasileiro|Meio-Campista|Nenhum|Vasco|0
+Cr7|7|42|Pt|Esquerda|Al|Braga|0
+CLUBS 3
+0|Vasco|1|0
+1|Flamengo|0
+2|Braga|1|1
+MATCHES 2
+1|0|1|4|14|10|45|27|16|55
+0|1|2|5|20|17|38|19|8|62

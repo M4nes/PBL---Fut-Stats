@@ -13,17 +13,15 @@ typedef struct {
     int playerCount;
 } Club;
 
-// Funções
-void menuClubes(void);
+void menuEquipas(void);
 void addClub(void);
 void listClubs(void);
-void editClub(void);
 
 int getClubCount(void);
 Club* getClub(int index);
 int findClubIndex(const char *name);
 
-extern int clubCount;
 extern Club clubs[MAX_CLUBS];
+extern int clubCount;
 
 #endif

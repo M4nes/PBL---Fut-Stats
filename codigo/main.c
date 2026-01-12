@@ -1,17 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "menu.h"
 #include "storage.h"
 
-//typeof struct cria "tipos personalizados" como classes simples
-
 int main() {
-    printf("Carregando dados salvos...\n");
-    loadAllData();                // Carrega jogadores, clubes e partidas do arquivo
+    srand(time(NULL));  // Inicializa números aleatórios
 
-    mainMenu();                   // Chama o menu principal, onde escolhe o que fazer (jogadores, clubes, partidas).
-
-    printf("Salvando dados...\n");
-    saveAllData();                // Salva tudo ao sair
+    loadAllData();
+    mainMenu();
+    saveAllData();
 
     return 0;
 }
