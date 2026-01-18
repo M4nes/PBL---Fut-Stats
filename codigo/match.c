@@ -4,6 +4,10 @@
 #include "club.h"
 #include "storage.h"
 
+#define ORANGE "\033[38;5;208m"
+#define BOLD   "\033[1m"
+#define RESET  "\033[0m"
+
 Match matches[MAX_MATCHES];
 int matchCount = 0;
 
@@ -22,15 +26,23 @@ void generateRandomMatch(Match *m) {
 }
 
 void printMatchResult(const Match *m) {
-    printf("\n===== RESULTADO =====\n");
+    printf("\n%s===== RESULTADO =====%s\n", ORANGE BOLD, RESET);
     printf("%s %d x %d %s\n\n", m->clubA->name, m->scoreA, m->scoreB, m->clubB->name);
-    printf("%s: Chutes %d (%d no alvo) | Posse %d%%\n", m->clubA->name, m->shotsA, m->shotsOnTargetA, m->possessionA);
-    printf("%s: Chutes %d (%d no alvo) | Posse %d%%\n", m->clubB->name, m->shotsB, m->shotsOnTargetB, m->possessionB);
+    printf("%s%s: Chutes %d (%d no alvo) | Posse %d%%%s\n", ORANGE, m->clubA->name, m->shotsA, m->shotsOnTargetA, m->possessionA, RESET);
+    printf("%s%s: Chutes %d (%d no alvo) | Posse %d%%%s\n", ORANGE, m->clubB->name, m->shotsB, m->shotsOnTargetB, m->possessionB, RESET);
+
+    if (m->scoreA > m->scoreB) {
+        printf("\n%sVITÓRIA: %s! 🎉%s\n", ORANGE BOLD, m->clubA->name, RESET);
+    } else if (m->scoreB > m->scoreA) {
+        printf("\n%sVITÓRIA: %s! 🎉%s\n", ORANGE BOLD, m->clubB->name, RESET);
+    } else {
+        printf("\n%sEMPATE! %s\n", ORANGE BOLD, RESET);
+    }
 }
 
 void playManualMatch(void) {
     if (clubCount < 2) {
-        printf("Precisa de pelo menos 2 equipas!\n");
+        printf("%sPrecisa de pelo menos 2 equipas!%s\n", ORANGE, RESET);
         getchar(); getchar();
         return;
     }
@@ -41,7 +53,7 @@ void playManualMatch(void) {
     printf("Equipa B: "); scanf("%d", &b); b--;
 
     if (a == b || a < 0 || a >= clubCount || b < 0 || b >= clubCount) {
-        printf("Seleção inválida!\n");
+        printf("%sSeleção inválida!%s\n", ORANGE, RESET);
         getchar(); getchar();
         return;
     }
@@ -60,7 +72,7 @@ void playManualMatch(void) {
 
 void playRandomMatch(void) {
     if (clubCount < 8) {
-        printf("Precisa de pelo menos 8 equipas!\n");
+        printf("%sPrecisa de pelo menos 8 equipas!%s\n", ORANGE, RESET);
         getchar(); getchar();
         return;
     }
@@ -82,19 +94,19 @@ void playRandomMatch(void) {
     matches[matchCount++] = m;
     saveAllData();
 
-    printf("\nSORTEIO ALEATÓRIO: %s vs %s\n", m.clubA->name, m.clubB->name);
+    printf("\n%sSORTEIO ALEATÓRIO: %s vs %s%s\n", ORANGE BOLD, m.clubA->name, m.clubB->name, RESET);
     printMatchResult(&m);
     getchar(); getchar();
 }
 
 void listMatchHistory(void) {
     if (matchCount == 0) {
-        printf("\nNenhum jogo registado.\n");
+        printf("%sNenhum jogo registado.%s\n", ORANGE, RESET);
         getchar(); getchar();
         return;
     }
 
-    printf("\n=== HISTÓRICO DE JOGOS ===\n");
+    printf("\n%s=== HISTÓRICO DE JOGOS ===%s\n", ORANGE BOLD, RESET);
     for (int i = 0; i < matchCount; i++) {
         printf("%d. %s %d x %d %s\n", i+1, matches[i].clubA->name, matches[i].scoreA, matches[i].scoreB, matches[i].clubB->name);
     }
@@ -104,7 +116,7 @@ void listMatchHistory(void) {
 void menuJogos(void) {
     int op;
     do {
-        printf("\n--- REGISTO DE JOGOS ---\n");
+        printf("\n%s--- REGISTO DE JOGOS ---%s\n", ORANGE BOLD, RESET);
         printf("1. Registar jogo manual\n");
         if (clubCount >= 8) printf("2. Sorteio aleatório\n");
         printf("0. Voltar\n");
@@ -115,7 +127,7 @@ void menuJogos(void) {
             case 1: playManualMatch(); break;
             case 2: if (clubCount >= 8) playRandomMatch(); break;
             case 0: break;
-            default: printf("Opção inválida!\n"); getchar(); getchar();
+            default: printf("%sOpção inválida!%s\n", ORANGE, RESET); getchar(); getchar();
         }
     } while (op != 0);
 }

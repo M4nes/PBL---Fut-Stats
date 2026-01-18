@@ -16,7 +16,7 @@ typedef struct {
     int goalDiff;
 } LeagueEntry;
 
-LeagueEntry league[50];
+LeagueEntry league[MAX_CLUBS];
 
 int compare(const void *a, const void *b) {
     LeagueEntry *ea = (LeagueEntry *)a;
