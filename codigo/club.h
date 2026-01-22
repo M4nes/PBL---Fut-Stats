@@ -16,6 +16,8 @@ typedef struct {
 void menuEquipas(void);
 void addClub(void);
 void listClubs(void);
+void editClub(void);
+void viewClubs(void); 
 
 int getClubCount(void);
 Club* getClub(int index);

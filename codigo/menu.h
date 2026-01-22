@@ -3,5 +3,6 @@
 
 void mainMenu(void);
 void clearScreen(void);
+void startTournament(void);
 
 #endif

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include "menu.h"
 #include "storage.h"
 
@@ -8,26 +9,19 @@
 #include <windows.h>
 #endif
 
-// Cores ANSI
-#define ORANGE "\033[38;5;208m"
-#define BOLD   "\033[1m"
-#define RESET  "\033[0m"
-
-// Variável global para saber se é ADM
-int isAdm = 0;
-
 #define ADM_USERNAME "admin"
 #define ADM_PASSWORD "admin123"
+
 #define USER_USERNAME "user"
 #define USER_PASSWORD "user123"
+
+int isAdm = 0;
 
 void login() {
     char username[50];
     char password[50];
 
-    clearScreen();  // Limpa tela antes do login
-
-    printf("%s=== SISTEMA DE LOGIN ===%s\n", ORANGE BOLD, RESET);
+    printf("\n=== SISTEMA DE LOGIN ===\n");
     printf("Username: ");
     scanf(" %49[^\n]", username);
 
@@ -36,26 +30,21 @@ void login() {
 
     if (strcmp(username, ADM_USERNAME) == 0 && strcmp(password, ADM_PASSWORD) == 0) {
         isAdm = 1;
-        printf("\n%sLogin ADM bem-sucedido! Acesso total liberado.%s\n", ORANGE, RESET);
+        printf("\nLogin ADM bem-sucedido!\n");
     } else if (strcmp(username, USER_USERNAME) == 0 && strcmp(password, USER_PASSWORD) == 0) {
         isAdm = 0;
-        printf("\n%sLogin Usuário bem-sucedido! Acesso limitado.%s\n", ORANGE, RESET);
+        printf("\nLogin Usuário bem-sucedido!\n");
     } else {
-        printf("\n%sLogin inválido! Entrando como Usuário (acesso limitado).%s\n", ORANGE, RESET);
+        printf("\nLogin inválido! Usando modo Usuário.\n");
         isAdm = 0;
     }
-
-    printf("%sPressione ENTER para continuar...%s", ORANGE, RESET);
     getchar(); getchar();
 }
 
 int main() {
-    #ifdef _WIN32
-        SetConsoleOutputCP(CP_UTF8);
-    #endif
-    srand(time(NULL));
+    srand(time(NULL));  
 
-    login();
+    login();  
 
     loadAllData();
     mainMenu();

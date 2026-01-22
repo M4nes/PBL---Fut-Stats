@@ -68,7 +68,7 @@ void showLeagueTable(void) {
     qsort(league, clubCount, sizeof(LeagueEntry), compare);
 
     printf("\n=== CLASSIFICAÇÃO ===\n");
-    printf("Pos | Equipa           | Pts | J | V | E | D | GM | GS | SG\n");
+    printf("Pos | Equipa           | Pts | J  | V  | E  | D  | GM | GS | SG\n");
     for (int i = 0; i < clubCount; i++) {
         LeagueEntry e = league[i];
         printf("%3d | %-16s | %3d | %2d | %2d | %2d | %2d | %2d | %2d | %2d\n",
