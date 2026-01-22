@@ -9,6 +9,7 @@
 #include <windows.h>
 #endif
 
+
 #define ADM_USERNAME "admin"
 #define ADM_PASSWORD "admin123"
 
@@ -42,13 +43,15 @@ void login() {
 }
 
 int main() {
-    srand(time(NULL));  
+    #ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
 
-    login();  
-
+    srand(time(NULL));
+    login();
     loadAllData();
     mainMenu();
     saveAllData();
-
     return 0;
 }
